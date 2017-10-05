@@ -12,7 +12,3 @@
 'Panaeng Ghai':['chicken','panaeng curry','coconut milk','red chilli'],
 'Fuck Tong Phad Khai':['pumpkin','egg','garlic'],
 'Khai Palo':['egg','tofu','palo','garlic']
-
-
-
-
