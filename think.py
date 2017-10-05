@@ -1,0 +1,4 @@
+"""think"""
+def main():
+    
+main()
