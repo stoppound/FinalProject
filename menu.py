@@ -1,6 +1,3 @@
-"""menu R/"""
-
-{
 'Khao Phad Mhoo':['rice','pork','egg'],
 'Khao Phad Mhoo':['rice','chicken','egg'],
 'Mhoo Phad Kratiem':['pork','garlic'],
@@ -15,7 +12,7 @@
 'Panaeng Ghai':['chicken','panaeng curry','coconut milk','red chilli'],
 'Fuck Tong Phad Khai':['pumpkin','egg','garlic'],
 'Khai Palo':['egg','tofu','palo','garlic']
-}
+
 
 
 
