@@ -15,28 +15,42 @@ def data(thing):
             'Fakthong Phad Khai':['pumpkin','egg','garlic'],
             'Khai Palo':['egg','tofu','palo','garlic']
             }
-    lst1 = []
-    lst2 = []
-    lst3 = []
-    lst4 = []
+    lst = []
     for m in menu:
         num_count = 0
         for i in thing:
             if i in menu[m]:
                 num_count += 1
-        lst1.append((len(menu[m])-num_count, m))
-    lst1.sort()
+        lst.append((len(menu[m])-num_count, m))
+    lst.sort()
     # for i in thing:
     #     for m in menu:
-    #         if m not in lst1:
+    #         if m not in lst:
     #             if i in menu[m]:
     #                
-    output(lst1)
+    output(lst)
 
 
 def output(out):
-    for i in out:
-        print(i)
+    # lst0 = []
+    # lst1 = []
+    # lst2 = []
+    # lst3 = []
+    # lst4 = []
+    # for i in out:
+    #     if i[0] == 0:
+    #         lst0.append(i[1])
+    #     elif i[0] == 1:
+    #         lst1.append(i[1])
+    #     elif i[0] == 2:
+    #         lst2.append(i[1])
+    #     elif i[0] == 3:
+    #         lst3.append(i[1])
+    #     elif i[0] == 4:
+    #         lst4.append(i[1])
+    for i in out[1]:
+        
+
 
 
 def main():
