@@ -23,41 +23,97 @@ def data(thing):
                 num_count += 1
         lst.append((len(menu[m])-num_count, m))
     lst.sort()
-    # for i in thing:
-    #     for m in menu:
-    #         if m not in lst:
-    #             if i in menu[m]:
-    #                
     output(lst)
 
 
 def output(out):
-    # lst0 = []
-    # lst1 = []
-    # lst2 = []
-    # lst3 = []
-    # lst4 = []
+    all_lst = []
+    # lst = [[] for _ in range(10)]
     # for i in out:
-    #     if i[0] == 0:
-    #         lst0.append(i[1])
-    #     elif i[0] == 1:
-    #         lst1.append(i[1])
-    #     elif i[0] == 2:
-    #         lst2.append(i[1])
-    #     elif i[0] == 3:
-    #         lst3.append(i[1])
-    #     elif i[0] == 4:
-    #         lst4.append(i[1])
-    for i in out[1]:
-        
+        # if i[0] == 0:
+        #     lst[0].append(i[1])
+        # elif i[0] == 1:
+        #     lst[1].append(i[1])
+        # elif i[0] == 2:
+        #     lst[2].append(i[1])
+        # elif i[0] == 3:
+        #     lst[3].append(i[1])
+        # elif i[0] == 4:
+        #     lst[4].append(i[1])
+        # elif i[0] == 5:
+        #     lst[5].append(i[1])
+        # elif i[0] == 6:
+        #     lst[6].append(i[1])
+        # elif i[0] == 7:
+        #     lst[7].append(i[1])
+        # elif i[0] == 8:
+        #     lst[8].append(i[1])
+        # elif i[0] == 9:
+        #     lst[9].append(i[1])
+        # elif i[0] == 10:
+        #     lst[10].append(i[1])
+    lst0 = []
+    lst1 = []
+    lst2 = []
+    lst3 = []
+    lst4 = []
+    lst5 = []
+    lst6 = []
+    lst7 = []
+    lst8 = []
+    lst9 = []
+    lst10 = []
+    for i in out:
+        if i[0] == 0:
+            lst0.append(i[1])
+        elif i[0] == 1:
+            lst1.append(i[1])
+        elif i[0] == 2:
+            lst2.append(i[1])
+        elif i[0] == 3:
+            lst3.append(i[1])
+        elif i[0] == 4:
+            lst4.append(i[1])
+        elif i[0] == 5:
+            lst5.append(i[1])
+        elif i[0] == 6:
+            lst6.append(i[1])
+        elif i[0] == 7:
+            lst7.append(i[1])
+        elif i[0] == 8:
+            lst8.append(i[1])
+        elif i[0] == 9:
+            lst9.append(i[1])
+        elif i[0] == 10:
+            lst10.append(i[1])
+    num = 0
+    lst_ans = []
+    while num != 10:
+        num += 1
+        print(num, out[num-1][1])
+        lst_ans.append(out[num-1][1])
+
+    choose = int(input("NUMBER:"))
+    while not(1 <= choose <= 10):
+        choose = int(input("NUMBER:"))
+
+    num = 0
+    count = 1
+    while count != 11:
+        count += 1
+        num += 1
+        if num == choose:
+            print(out[num-1][1])
+
 
 
 
 def main():
-    check = input()
+    print("egg    rice    pork    chicken    coconut    ")
+    check = input("MATERIAL:")
     thing = []
     while check != 'end':
         thing.append(check)
-        check = input()
+        check = input("MATERIAL:")
     data(thing)
 main()
