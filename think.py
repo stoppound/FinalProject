@@ -1,19 +1,41 @@
 """think"""
 def data(thing):
-    menu = {'Khao Phad Mhoo':['rice','pork','egg'],
-            'Khao Phad kai':['rice','chicken','egg'],
-            'Mhoo Phad Kratiem':['pork','garlic'],
-            'kai Phad Kratiem':['chicken','garlic'],
-            'Mhoo Phad Kra Phrao':['pork','basil'],
-            'kai Phad Kra Phrao':['chicken','basil'],
+    menu = {'Khao Phad Mhoo':['rice','pork','egg','soy sauce','oyster sauce'],
+            'Khao Phad Ghai':['rice','chicken','egg','soy sauce','oyster sauce'],
+            'Mhoo Thord Kratiem':['pork','garlic'],
+            'Ghai Thord Kratiem':['chicken','garlic'],
+            'Mhoo Phad Kra Phrao':['pork','basil','chilli','garlic','oyster sauce'],
+            'Ghai Phad Kra Phrao':['chicken','basil','chilli','garlic','oyster sauce'],
             'Mama Phad Mhoo':['mama','pork','egg'],
-            'Mama Phad kai':['mama','chicken','egg'],
-            'Mhoo Phad Nam Plar':['pork','fish sauce'],
-            'kai Phad Nam Plar':['chicken','fish sauce'],
+            'Mama Phad Ghai':['mama','chicken','egg'],
+            'Mhoo Thord Nam Plar':['pork','fish sauce'],
+            'Ghai Thord Nam Plar':['chicken','fish sauce'],
             'Panaeng Mhoo':['pork','panaeng curry','coconut milk','red chilli'],
-            'Panaeng kai':['chicken','panaeng curry','coconut milk','red chilli'],
-            'Fakthong Phad Khai':['pumpkin','egg','garlic'],
-            'Khai Palo':['egg','tofu','palo','garlic']
+            'Panaeng Ghai':['chicken','panaeng curry','coconut milk','red chilli'],
+            'Fak Tong Phad Khai':['pumpkin','egg','garlic'],
+            'Khai Palo':['egg','tofu','palo','garlic'],
+            'Khai Jiew Mhoo Sahb':['egg','pork','soy sauce'],
+            'Mhoo Phad Nammun Hoy':['pork','oyster sauce','garlic'],
+            'Mhoo Phad Phonk Kraree':['pork','curry powder','onion','milk','egg'],
+            'Phad Prick Gaenk Mhoo':['pork','curry'],
+            'Phad Phonk Kraree Thale':['squid','shrimp','onion','milk','egg','curry powder'],
+            'Khaw Thom Mhoo':['pork','rice'],
+            'Khaw Thom Koong':['shrimp','rice'],
+            'Masman Ghai':['chicken','onion','coconut milk','potato','masman curry'],
+            'Mhoo Manaw':['pork','garlic','red chilli','fish sauce','lemon'],
+            'Tom Yam Koong Nam Khon':['mushroom','milk','shrimp','chili paste','chilli','lemon','tomato'],
+            'Suki Mhoo':['garlic','egg','pork','suki sauce'],
+            'Larb Mhoo':['pork','shallot','coriander','chilli','lemon'],
+            'Larb Ghai':['chicken','shallot','coriander','chilli','lemon'],
+            'Tom Jued Mhoo Sub':['pork','tofu','soup cube'],
+            'Hed Phud Nammun Hoy':['mushroom','oyster sauce','soy sauce'],
+            'Khaw Thom Plar':['fish','rice'],
+            'Khana Mhoo':['pork','kale','soy sauce','oyster sauce'],
+            'Mhoo Phad Prick Phao':['pork','chili paste'],
+            'Ghai Phad Prick Phao':['chicken','chili paste'],
+            'Makuer Phad Khai':['egg','tomato'],
+            'Gaenk Som Mhoo':['pork','curry','chilli','shrimp paste'],
+            'Ghai Thom Nam plar':['chicken','fish sauce','soy sauce']
             }
     lst = []
     for m in menu:
@@ -28,30 +50,6 @@ def data(thing):
 
 def output(out):
     all_lst = []
-    # lst = [[] for _ in range(10)]
-    # for i in out:
-        # if i[0] == 0:
-        #     lst[0].append(i[1])
-        # elif i[0] == 1:
-        #     lst[1].append(i[1])
-        # elif i[0] == 2:
-        #     lst[2].append(i[1])
-        # elif i[0] == 3:
-        #     lst[3].append(i[1])
-        # elif i[0] == 4:
-        #     lst[4].append(i[1])
-        # elif i[0] == 5:
-        #     lst[5].append(i[1])
-        # elif i[0] == 6:
-        #     lst[6].append(i[1])
-        # elif i[0] == 7:
-        #     lst[7].append(i[1])
-        # elif i[0] == 8:
-        #     lst[8].append(i[1])
-        # elif i[0] == 9:
-        #     lst[9].append(i[1])
-        # elif i[0] == 10:
-        #     lst[10].append(i[1])
     lst0 = []
     lst1 = []
     lst2 = []
@@ -106,14 +104,29 @@ def output(out):
             print(out[num-1][1])
 
 
+def username(name):
+    lst_name = []
+    if name in lst_name:
+        check = lst_name.find(name)
+
+    else:
+        lst_name.append(name)
 
 
 def main():
-    print("egg    rice    pork    chicken    coconut    ")
+    user = input("USERNAME:")
+    username(user)
+    print("PROTEIN:    "+"pork    chicken    shrimp    fish    egg    milk    coconut milk    bean    tofu")
+    print("CARBOHY:    "+"rice    mama    ")
+    print("VITAMIN:    "+"basil    chilli    red chilli    onion    lemon    tomato    pumpkin    kale")
+    print("SAUCE:      "+"soy sauce    oyster sauce    fish sauce    suki sauce")
+    # print(":"+"")
     check = input("MATERIAL:")
     thing = []
     while check != 'end':
         thing.append(check)
         check = input("MATERIAL:")
     data(thing)
+
+
 main()
