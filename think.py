@@ -103,6 +103,21 @@ def output(out):
         if num == choose:
             print(out[num-1][1])
 
+# =======
+    #     if i[0] == 0:
+    #         lst0.append(i[1])
+    #     elif i[0] == 1:
+    #         lst1.append(i[1])
+    #     elif i[0] == 2:
+    #         lst2.append(i[1])
+    #     elif i[0] == 3:
+    #         lst3.append(i[1])
+    #     elif i[0] == 4:
+    #         lst4.append(i[1])
+    for i in out:
+        print(i)
+        
+# >>>>>>> Stashed changes
 
 def username(name):
     lst_name = []
