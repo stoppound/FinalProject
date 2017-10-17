@@ -107,9 +107,10 @@ def output(out, user):
         num += 1
         print(num, ans[num-1][1])
 
-    choose = int(input("NUMBER:"))
-    while not(1 <= choose <= 10):
-        choose = int(input("NUMBER:"))
+    choose = ''
+    while not(choose.isdigit() and 1 <= int(choose) <= 10):
+        choose = input("NUMBER:")
+    choose = int(choose)
 
     num = 0
     count = 1
