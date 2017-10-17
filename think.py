@@ -1,5 +1,11 @@
 """think"""
-def data(thing):
+import pandas as pd
+df = pd.read_csv('database.csv')
+import numpy as np
+import warnings
+warnings.filterwarnings("ignore")
+
+def data(thing, user):
     menu = {'Khao Phad Mhoo':['rice','pork','egg','soy sauce','oyster sauce'],
             'Khao Phad Ghai':['rice','chicken','egg','soy sauce','oyster sauce'],
             'Mhoo Thord Kratiem':['pork','garlic'],
@@ -45,11 +51,10 @@ def data(thing):
                 num_count += 1
         lst.append((len(menu[m])-num_count, m))
     lst.sort()
-    output(lst)
+    output(lst, user)
 
 
-def output(out):
-    all_lst = []
+def output(out, user):
     lst0 = []
     lst1 = []
     lst2 = []
@@ -63,33 +68,44 @@ def output(out):
     lst10 = []
     for i in out:
         if i[0] == 0:
-            lst0.append(i[1])
+            lst0.append([getValue(user, i[1]), i[1]])
+            lst0.sort(reverse=True)
         elif i[0] == 1:
-            lst1.append(i[1])
+            lst1.append([getValue(user, i[1]), i[1]])
+            lst1.sort(reverse=True)
         elif i[0] == 2:
-            lst2.append(i[1])
+            lst2.append([getValue(user, i[1]), i[1]])
+            lst2.sort(reverse=True)
         elif i[0] == 3:
-            lst3.append(i[1])
+            lst3.append([getValue(user, i[1]), i[1]])
+            lst3.sort(reverse=True)
         elif i[0] == 4:
-            lst4.append(i[1])
+            lst4.append([getValue(user, i[1]), i[1]])
+            lst4.sort(reverse=True)
         elif i[0] == 5:
-            lst5.append(i[1])
+            lst5.append([getValue(user, i[1]), i[1]])
+            lst5.sort(reverse=True)
         elif i[0] == 6:
-            lst6.append(i[1])
+            lst6.append([getValue(user, i[1]), i[1]])
+            lst6.sort(reverse=True)
         elif i[0] == 7:
-            lst7.append(i[1])
+            lst7.append([getValue(user, i[1]), i[1]])
+            lst7.sort(reverse=True)
         elif i[0] == 8:
-            lst8.append(i[1])
+            lst8.append([getValue(user, i[1]), i[1]])
+            lst8.sort(reverse=True)
         elif i[0] == 9:
-            lst9.append(i[1])
+            lst9.append([getValue(user, i[1]), i[1]])
+            lst9.sort(reverse=True)
         elif i[0] == 10:
-            lst10.append(i[1])
+            lst10.append([getValue(user, i[1]), i[1]])
+            lst10.sort(reverse=True)
+
     num = 0
-    lst_ans = []
+    ans = lst0 + lst1 + lst2 + lst3 + lst4 + lst5 + lst6 + lst7 + lst8 + lst9 + lst10
     while num != 10:
         num += 1
-        print(num, out[num-1][1])
-        lst_ans.append(out[num-1][1])
+        print(num, ans[num-1][1])
 
     choose = int(input("NUMBER:"))
     while not(1 <= choose <= 10):
@@ -101,31 +117,35 @@ def output(out):
         count += 1
         num += 1
         if num == choose:
-            print(out[num-1][1])
+            print(ans[num-1][1])
+            save2(ans[num-1][1], user)
 
-# =======
-    #     if i[0] == 0:
-    #         lst0.append(i[1])
-    #     elif i[0] == 1:
-    #         lst1.append(i[1])
-    #     elif i[0] == 2:
-    #         lst2.append(i[1])
-    #     elif i[0] == 3:
-    #         lst3.append(i[1])
-    #     elif i[0] == 4:
-    #         lst4.append(i[1])
-    for i in out:
-        print(i)
-        
-# >>>>>>> Stashed changes
+def getValue(user, menu):
+    df = load()
+    return df[df['id'] == user][menu].values[0]
+
+def save(df):
+    df.to_csv('database.csv')
+
+def save2(menu, user):
+    df = load()
+    if np.isnan(df.ix[df.id[df.id == user].index[0], menu]):
+        df.ix[df.id[df.id == user].index[0], menu] = 0
+    df.ix[df.id[df.id == user].index[0], menu] += 1
+    save(df)
+
+
+def load():
+    return pd.read_csv('database.csv')
 
 def username(name):
-    lst_name = []
-    if name in lst_name:
-        check = lst_name.find(name)
-
+    df = load()
+    if name in df.id.values:
+        print('have user')
     else:
-        lst_name.append(name)
+        df = df.append(pd.DataFrame({'id': [name]}),  ignore_index=True)
+        print('add complete')
+    save(df)
 
 
 def main():
@@ -141,7 +161,7 @@ def main():
     while check != 'end':
         thing.append(check)
         check = input("MATERIAL:")
-    data(thing)
+    data(thing, user)
 
 
 main()
