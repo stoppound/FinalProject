@@ -1,9 +1,9 @@
-"""think"""
 import pandas as pd
 df = pd.read_csv('database.csv')
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
+from PIL import Image
 
 def data(thing, user):
     menu = {'Khao Phad Mhoo':['rice','pork','egg','soy sauce','oyster sauce'],
@@ -103,23 +103,173 @@ def output(out, user):
 
     num = 0
     ans = lst0 + lst1 + lst2 + lst3 + lst4 + lst5 + lst6 + lst7 + lst8 + lst9 + lst10
+    print('')
     while num != 10:
         num += 1
         print(num, ans[num-1][1])
 
     choose = ''
+    print('')
     while not(choose.isdigit() and 1 <= int(choose) <= 10):
         choose = input("NUMBER:")
     choose = int(choose)
 
     num = 0
     count = 1
+    print('')
     while count != 11:
         count += 1
         num += 1
         if num == choose:
             print(ans[num-1][1])
             save2(ans[num-1][1], user)
+            link(ans[num-1][1])
+
+def link(output):
+    if output == 'Khao Phad Mhoo':
+        img = Image.open("ข้าวผัดหมู.jpg")
+        img.show()
+        return
+    elif output == 'Khao Phad Ghai':
+        img = Image.open("ข้าวผัดไก่.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Thord Kratiem':
+        img = Image.open("หมูทอดกระเทียม.jpg")
+        img.show()
+        return
+    elif output == 'Ghai Thord Kratiem':
+        img = Image.open("ไก่ทอดกระเทียม.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Phad Kra Phrao':
+        img = Image.open("หมูผัดกระเพรา.jpg")
+        img.show()
+        return
+    elif output == 'Ghai Phad Kra Phrao':
+        img = Image.open("ไก่ผัดกระเพรา.jpg")
+        img.show()
+        return
+    elif output == 'Mama Phad Mhoo':
+        img = Image.open("มาม่าผัดหมู.jpg")
+        img.show()
+        return
+    elif output == 'Mama Phad Ghai':
+        img = Image.open("มาม่าผัดไก่.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Thord Nam Plar':
+        img = Image.open("หมูทอดน้ำปลา.jpg")
+        img.show()
+        return
+    elif output == 'Ghai Thord Nam Plar':
+        img = Image.open("ปีกไก่ทอดน้ำปลา.jpg")
+        img.show()
+        return
+    elif output == 'Panaeng Mhoo':
+        img = Image.open("พะแนงหมู.jpg")
+        img.show()
+        return
+    elif output == 'Panaeng Ghai':
+        img = Image.open("พะแนงไก่.jpg")
+        img.show()
+        return
+    elif output == 'Fak Tong Phad Khai':
+        img = Image.open("ฟักทองผัดไข่.jpg")
+        img.show()
+        return
+    elif output == 'Khai Palo':
+        img = Image.open("ไข่พะโล้.jpg")
+        img.show()
+        return
+    elif output == 'Khai Jiew Mhoo Sahb':
+        img = Image.open("ไข่เจียวหมูสับ.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Phad Nammun Hoy':
+        img = Image.open("หมูผัดน้ำมันหอย.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Phad Phonk Kraree':
+        img = Image.open("หมูผัดผงกระหรี่.jpg")
+        img.show()
+        return
+    elif output == 'Phad Prick Gaenk Mhoo':
+        img = Image.open("ผัดพริกแกงหมู.jpg")
+        img.show()
+        return
+    elif output == 'Phad Phonk Kraree Thale':
+        img = Image.open("ผัดผงกระหี่ทะเล.jpg")
+        img.show()
+        return
+    elif output == 'Khaw Thom Mhoo':
+        img = Image.open("ข้าวต้มหมู.jpg")
+        img.show()
+        return
+    elif output == 'Khaw Thom Koong':
+        img = Image.open("ข้าวต้มกุ้ง.jpg")
+        img.show()
+        return
+    elif output == 'Masman Ghai':
+        img = Image.open("มัสมั่ยไก่.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Manaw':
+        img = Image.open("หมูมะนาว.jpg")
+        img.show()
+        return
+    elif output == 'Tom Yam Koong Nam Khon':
+        img = Image.open("ต้มยำกุ้งน้ำข้น.jpg")
+        img.show()
+        return
+    elif output == 'Suki Mhoo':
+        img = Image.open("สุกี้หมูjpg")
+        img.show()
+        return
+    elif output == 'Larb Mhoo':
+        img = Image.open("ลาบหมู.jpg")
+        img.show()
+        return
+    elif output == 'Larb Ghai':
+        img = Image.open("ลาบไก่.jpg")
+        img.show()
+        return
+    elif output == 'Tom Jued Mhoo Sub':
+        img = Image.open("ต้มจืดหมูสับ.jpg")
+        img.show()
+        return
+    elif output == 'Hed Phud Nammun Hoy':
+        img = Image.open("เห็ดผัดน้ำมันหอย.jpg")
+        img.show()
+        return
+    elif output == 'Khaw Thom Plar':
+        img = Image.open("ข้าวต้มปลา.jpg")
+        img.show()
+        return
+    elif output == 'Khana Mhoo':
+        img = Image.open("คะน้าหมู.jpg")
+        img.show()
+        return
+    elif output == 'Mhoo Phad Prick Phao':
+        img = Image.open("หมูผัดพริกเผา.jpg")
+        img.show()
+        return
+    elif output == 'Ghai Phad Prick Phao':
+        img = Image.open("ไก่ผัดพริกเผา.jpg")
+        img.show()
+        return
+    elif output == 'Makuer Phad Khai':
+        img = Image.open("มะเขือเทศผัดไข่.jpg")
+        img.show()
+        return
+    elif output == 'Gaenk Som Mhoo':
+        img = Image.open("แกงส้มหมู.jpg")
+        img.show()
+        return
+    elif output == 'Ghai Thom Nam plar':
+        img = Image.open("ไก่ต้มน้ำปลา.jpg")
+        img.show()
+        return
 
 def getValue(user, menu):
     df = load()
@@ -142,26 +292,33 @@ def load():
 def username(name):
     df = load()
     if name in df.id.values:
-        print('have user')
+        print('Have user')
+        print('')
     else:
         df = df.append(pd.DataFrame({'id': [name]}),  ignore_index=True)
-        print('add complete')
+        print('Add complete')
+        print('')
     save(df)
 
 
 def main():
-    user = input("USERNAME:")
+    point = '*'
+    print("Please Login")
+    user = input("Username:")
     username(user)
-    print("PROTEIN:    "+"pork    chicken    shrimp    fish    egg    milk    coconut milk    bean    tofu")
-    print("CARBOHY:    "+"rice    mama    ")
-    print("VITAMIN:    "+"basil    chilli    red chilli    onion    lemon    tomato    pumpkin    kale")
-    print("SAUCE:      "+"soy sauce    oyster sauce    fish sauce    suki sauce")
+    print('*'*145)
+    print("*  pork    chicken    shrimp    fish    egg    milk    coconut milk    bean    tofu                                                             *")
+    print("*  rice    mama                                                                                                                                 *")
+    print("*  basil   chilli     red chilli    onion    lemon    tomato    pumpkin    kale                                                                 *")
+    print("*  soy sauce    oyster sauce    fish sauce    suki sauce                                                                                        *")
+    print('*'*145+'\n')
     # print(":"+"")
-    check = input("MATERIAL:")
+    print('When finish put \'end\'')
+    check = input("Material:")
     thing = []
     while check != 'end':
         thing.append(check)
-        check = input("MATERIAL:")
+        check = input("Material:")
     data(thing, user)
 
 
