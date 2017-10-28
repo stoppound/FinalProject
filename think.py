@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_csv('database.csv')
+df = pd.read_csv('database.csv',index_col=0)
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
@@ -287,7 +287,7 @@ def save2(menu, user):
 
 
 def load():
-    return pd.read_csv('database.csv')
+    return pd.read_csv('database.csv',index_col=0)
 
 def username(name):
     df = load()
@@ -307,10 +307,10 @@ def main():
     user = input("Username:")
     username(user)
     print('*'*145)
-    print("*  pork    chicken    shrimp    fish    egg    milk    coconut milk    bean    tofu                                                             *")
-    print("*  rice    mama                                                                                                                                 *")
-    print("*  basil   chilli     red chilli    onion    lemon    tomato    pumpkin    kale                                                                 *")
-    print("*  soy sauce    oyster sauce    fish sauce    suki sauce                                                                                        *")
+    print("*  pork    chicken    shrimp    fish     egg      milk      coriander   tomato     panaeng curry    curry powder     masman curry               *")
+    print("*  kale    mushroom   potato    squid    palo     chilli    garlic      pumpkin    soy sauce        oyster sauce     shrimp paste               *")
+    print("*  mama    rice       basil     onion    bean     lemon     shallot     tofu       red chilli       fish sauce       suki sauce                 *")
+    # print("*                                                                                                                                               *")
     print('*'*145+'\n')
     # print(":"+"")
     print('When finish put \'end\'')
