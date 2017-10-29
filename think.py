@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_csv('database.csv',index_col=0)
+df = pd.read_csv('database.csv')
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
