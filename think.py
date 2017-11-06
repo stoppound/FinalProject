@@ -116,30 +116,31 @@ def output(out, user):
         num.pack()
     number = Entry(root,state='normal')
     number.pack()
-    ok = Button(root,text='OK',command=lambda:checknum(number))
+    ok = Button(root,text='OK',command=lambda:checknum(number,ans,user,root))
     ok.pack()
-    num = 0
-    count = 1
-    while count != 11:
-        count += 1
-        num += 1
-        if num == number:
-            save2(ans[num-1][1], user)
-            link(ans[num-1][1])
-            showans((ans[num-1][1]).root)
+
     root.mainloop()
-def checknum(number):
+def checknum(number,ans,user,root):
     if not(number.get().isdigit() and 1 <= int(number.get()) <= 10):
         messagebox.showerror('Error','Invalid Number')
         number.delete(0, 'end')
     else:
         number = int(number.get())
-        messagebox.showerror('Correct','Successfully')
+        messagebox.showinfo('Correct','Successfully')
+        num = 0
+        count = 1
+        while count != 11:
+            count += 1
+            num += 1
+            if num == number:
+                save2(ans[num-1][1], user)
+                showans((ans[num-1][1]),root)
 
 def showans(ans,root):
     root.destroy()
     master=Tk()
     show = Label(master,text='FUNNY')
+    show.pack()
     master.mainloop()
 
 def link(output):
