@@ -734,12 +734,27 @@ def CreateUser():   #<---  create username and password
     passEntry = Entry(mid, show='*')
     passEntry.grid(row=4,column=1,sticky=W,padx=15)
 
+<<<<<<< Updated upstream
     signButton = Button(mid, text='Sign Up',padx=10,pady=10,
         command=lambda:WriteUs(nameEntry, passEntry,signroot))
     signButton.grid(row=6,columnspan=2)
     z = Label(mid,text='')
     z.grid(row=5)
 
+=======
+# signroot to mid change
+    signButton = Button(mid, text='Sign Up',padx=10,pady=10,
+        command=lambda:WriteUs(nameEntry, passEntry,mid))
+    signButton.grid(row=5,column=1,sticky=E)
+
+
+    var=IntVar()
+
+    ShowPass = Checkbutton(mid, text='Show password',font=15,
+        variable=var,
+        command=lambda:displayPassword(passEntry, var))
+    ShowPass.grid(row=5,column=0, sticky=W)
+>>>>>>> Stashed changes
     signroot.mainloop()
 
 def userHelp():
