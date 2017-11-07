@@ -112,21 +112,312 @@ def output(out, user):
 
     root = Tk()
     root.resizable(width=False,height=False)
-    root.geometry('{}x{}'.format(700,400))
+    # root.geometry('{}x{}'.format(700,400))
     name=Label(root,text='กรุณาเลือกเมนู',font = ('Helvetica 16 bold',20),fg='blue')
     name.grid(row=0,columnspan=2)
     for i in range(0, 10):
-        num = Label(root,font = ('Helvetica 16 bold',15),text=str(i+1)+': '+lst_show[i])
+        num = Label(root,font = ('Helvetica 16 bold',15),text=str(i+1)+': '+showname(lst_show[i]))
         num.grid(row=i+1,column=0,sticky=W)
     for j in range(0,10):
-        num = Label(root,text=str(j+1)+': '+lst_show[j])
-        num.grid(row=j+1,column=1,sticky=E)
+        showpic(lst_show[j],root,j)
     number = Entry(root,state='normal')
     number.grid(row=11)
     ok = Button(root,text='ตกลง',font=10,padx=5,pady=5,command=lambda:checknum(number,ans,user,root))
     ok.grid(row=12)
 
     root.mainloop()
+def showpic(text,root,j):
+    if text == 'Khao Phad Mhoo':
+        pic = PhotoImage(file='image(gif)/Khao Phad Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khao Phad Ghai':
+        pic = PhotoImage(file='image(gif)/Khao Phad Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Thord Kratiem':
+        pic = PhotoImage(file='image(gif)/Mhoo Thord Kratiem.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Thord Kratiem':
+        pic = PhotoImage(file='image(gif)/Ghai Thord Kratiem.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Kra Phrao':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Kra Phrao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Phad Kra Phrao':
+        pic = PhotoImage(file='image(gif)/Ghai Phad Kra Phrao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mama Phad Mhoo':
+        pic = PhotoImage(file='image(gif)/Mama Phad Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mama Phad Ghai':
+        pic = PhotoImage(file='image(gif)/Mama Phad Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Thord Nam Plar':
+        pic = PhotoImage(file='image(gif)/Mhoo Thord Nam Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Thord Nam Plar':
+        pic = PhotoImage(file='image(gif)/Ghai Thord Nam Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Panaeng Mhoo':
+        pic = PhotoImage(file='image(gif)/Panaeng Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Panaeng Ghai':
+        pic = PhotoImage(file='image(gif)/Panaeng Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Fak Tong Phad Khai':
+        pic = PhotoImage(file='image(gif)/Fak Tong Phad Khai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khai Palo':
+        pic = PhotoImage(file='image(gif)/Khai Palo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khai Jiew Mhoo Sahb':
+        pic = PhotoImage(file='image(gif)/Khai Jiew Mhoo Sahb.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Nammun Hoy':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Nammun Hoy.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Phonk Kraree':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Phonk Kraree.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Phad Prick Gaenk Mhoo':
+        pic = PhotoImage(file='image(gif)/Phad Prick Gaenk Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Phad Phonk Kraree Thale':
+        pic = PhotoImage(file='image(gif)/Phad Phonk Kraree Thale.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khaw Thom Mhoo':
+        pic = PhotoImage(file='image(gif)/Khaw Thom Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khaw Thom Koong':
+        pic = PhotoImage(file='image(gif)/Khaw Thom Koong.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Masman Ghai':
+        pic = PhotoImage(file='image(gif)/Masman Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Manaw':
+        pic = PhotoImage(file='image(gif)/Mhoo Manaw.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Tom Yam Koong Nam Khon':
+        pic = PhotoImage(file='image(gif)/Tom Yam Koong Nam Khon.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Suki Mhoo':
+        pic = PhotoImage(file='image(gif)/Suki Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Larb Mhoo':
+        pic = PhotoImage(file='image(gif)/Larb Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Larb Ghai':
+        pic = PhotoImage(file='image(gif)/Larb Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Tom Jued Mhoo Sub':
+        pic = PhotoImage(file='image(gif)/Tom Jued Mhoo Sub.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Hed Phud Nammun Hoy':
+        pic = PhotoImage(file='image(gif)/Hed Phud Nammun Hoy.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khaw Thom Plar':
+        pic = PhotoImage(file='image(gif)/Khaw Thom Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khana Mhoo':
+        pic = PhotoImage(file='image(gif)/Khana Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Prick Phao':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Prick Phao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Phad Prick Phao':
+        pic = PhotoImage(file='image(gif)/Ghai Phad Prick Phao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Makuer Phad Khai':
+        pic = PhotoImage(file='image(gif)/Makuer Phad Khai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Gaenk Som Mhoo':
+        pic = PhotoImage(file='image(gif)/Gaenk Som Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Thom Nam plar':
+        pic = PhotoImage(file='image(gif)/Ghai Thom Nam plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+
+def showname(output):
+    if output == 'Khao Phad Mhoo':
+        return("ข้าวผัดหมู")
+    elif output == 'Khao Phad Ghai':
+        return("ข้าวผัดไก่")    
+    elif output == 'Mhoo Thord Kratiem':
+        return("หมูทอดกระเทียม")
+    elif output == 'Ghai Thord Kratiem':
+        return("ไก่ทอดกระเทียม")
+    elif output == 'Mhoo Phad Kra Phrao':
+        return("หมูผัดกระเพรา")
+    elif output == 'Ghai Phad Kra Phrao':
+        return("ไก่ผัดกระเพรา")
+    elif output == 'Mama Phad Mhoo':
+        return("มาม่าผัดหมู")
+    elif output == 'Mama Phad Ghai':
+        return("มาม่าผัดไก่")
+    elif output == 'Mhoo Thord Nam Plar':
+        return("หมูทอดน้ำปลา")
+    elif output == 'Ghai Thord Nam Plar':
+        return("ปีกไก่ทอดน้ำปลา")
+    elif output == 'Panaeng Mhoo':
+        return("พะแนงหมู")
+    elif output == 'Panaeng Ghai':
+        return("พะแนงไก่")
+    elif output == 'Fak Tong Phad Khai':
+        return("ฟักทองผัดไข่")
+    elif output == 'Khai Palo':
+        return("ไข่พะโล้")
+    elif output == 'Khai Jiew Mhoo Sahb':
+        return("ไข่เจียวหมูสับ")
+    elif output == 'Mhoo Phad Nammun Hoy':
+        return("หมูผัดน้ำมันหอย")
+    elif output == 'Mhoo Phad Phonk Kraree':
+        return("หมูผัดผงกระหรี่")
+    elif output == 'Phad Prick Gaenk Mhoo':
+        return("ผัดพริกแกงหมู")
+    elif output == 'Phad Phonk Kraree Thale':
+        return("ผัดผงกระหี่ทะเล")
+    elif output == 'Khaw Thom Mhoo':
+        return("ข้าวต้มหมู")
+    elif output == 'Khaw Thom Koong':
+        return("ข้าวต้มกุ้ง")
+    elif output == 'Masman Ghai':
+        return("มัสมั่ยไก่")
+    elif output == 'Mhoo Manaw':
+        return("หมูมะนาว")
+    elif output == 'Tom Yam Koong Nam Khon':
+        return("ต้มยำกุ้งน้ำข้น")
+    elif output == 'Suki Mhoo':
+        return("สุกี้หมูjpg")
+    elif output == 'Larb Mhoo':
+        return("ลาบหมู")
+    elif output == 'Larb Ghai':
+        return("ลาบไก่")
+    elif output == 'Tom Jued Mhoo Sub':
+        return("ต้มจืดหมูสับ")
+    elif output == 'Hed Phud Nammun Hoy':
+        return("เห็ดผัดน้ำมันหอย")
+    elif output == 'Khaw Thom Plar':
+        return("ข้าวต้มปลา")
+    elif output == 'Khana Mhoo':
+        return("คะน้าหมู")
+    elif output == 'Mhoo Phad Prick Phao':
+        return("หมูผัดพริกเผา")
+    elif output == 'Ghai Phad Prick Phao':
+        return("ไก่ผัดพริกเผา")
+    elif output == 'Makuer Phad Khai':
+        return("มะเขือเทศผัดไข่")
+    elif output == 'Gaenk Som Mhoo':
+        return("แกงส้มหมู")
+    elif output == 'Ghai Thom Nam plar':
+        return("ไก่ต้มน้ำปลา")
+
 def checknum(number,ans,user,root):
     if not(number.get().isdigit() and 1 <= int(number.get()) <= 10):
         messagebox.showerror('Error','Invalid Number')
