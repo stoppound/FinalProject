@@ -12,14 +12,14 @@ def data(thing, user, root):
 
     menu = {'Khao Phad Mhoo':['rice','pork','egg','soy sauce','oyster sauce'],
             'Khao Phad Ghai':['rice','chicken','egg','soy sauce','oyster sauce'],
-            'Mhoo Thord Kratiem':['pork','garlic'],
-            'Ghai Thord Kratiem':['chicken','garlic'],
+            'Mhoo Thord Kratiem':['pork','garlic,oyster sauce,soy sauce'],
+            'Ghai Thord Kratiem':['chicken','garlic,oyster sauce,soy sauce'],
             'Mhoo Phad Kra Phrao':['pork','basil','chilli','garlic','oyster sauce'],
             'Ghai Phad Kra Phrao':['chicken','basil','chilli','garlic','oyster sauce'],
-            'Mama Phad Mhoo':['mama','pork','egg'],
-            'Mama Phad Ghai':['mama','chicken','egg'],
-            'Mhoo Thord Nam Plar':['pork','fish sauce'],
-            'Ghai Thord Nam Plar':['chicken','fish sauce'],
+            'Mama Phad Mhoo':['mama','pork','egg,chilli'],
+            'Mama Phad Ghai':['mama','chicken','egg,chilli'],
+            'Mhoo Thord Nam Plar':['pork','fish sauce','soy sauce','oyster sauce'],
+            'Ghai Thord Nam Plar':['chicken','fish sauce','soy sauce','oyster sauce'],
             'Panaeng Mhoo':['pork','panaeng curry','coconut milk','chilli'],
             'Panaeng Ghai':['chicken','panaeng curry','coconut milk','chilli'],
             'Fak Tong Phad Khai':['pumpkin','egg','garlic'],
@@ -27,10 +27,10 @@ def data(thing, user, root):
             'Khai Jiew Mhoo Sahb':['egg','pork','soy sauce'],
             'Mhoo Phad Nammun Hoy':['pork','oyster sauce','garlic'],
             'Mhoo Phad Phonk Kraree':['pork','curry powder','onion','milk','egg'],
-            'Phad Prick Gaenk Mhoo':['pork','curry'],
+            'Phad Prick Gaenk Mhoo':['pork','curry','garlic'],
             'Phad Phonk Kraree Thale':['squid','shrimp','onion','milk','egg','curry powder'],
-            'Khaw Thom Mhoo':['pork','rice'],
-            'Khaw Thom Koong':['shrimp','rice'],
+            'Khaw Thom Mhoo':['pork','rice','garlic','soy sauce'],
+            'Khaw Thom Koong':['shrimp','rice','garlic','soy sauce'],
             'Masman Ghai':['chicken','onion','coconut milk','potato','masman curry'],
             'Mhoo Manaw':['pork','garlic','chilli','fish sauce','lime'],
             'Tom Yam Koong Nam Khon':['mushroom','milk','shrimp','chili paste','chilli','lime','tomato'],
@@ -39,11 +39,11 @@ def data(thing, user, root):
             'Larb Ghai':['chicken','shallot','coriander','chilli','lime'],
             'Tom Jued Mhoo Sub':['pork','tofu','soup cube'],
             'Hed Phud Nammun Hoy':['mushroom','oyster sauce','soy sauce'],
-            'Khaw Thom Plar':['fish','rice'],
+            'Khaw Thom Plar':['fish','rice','garlic','soysauce'],
             'Khana Mhoo':['pork','kale','soy sauce','oyster sauce'],
-            'Mhoo Phad Prick Phao':['pork','chili paste'],
-            'Ghai Phad Prick Phao':['chicken','chili paste'],
-            'Makuer Phad Khai':['egg','tomato'],
+            'Mhoo Phad Prick Phao':['pork','chilli paste'],
+            'Ghai Phad Prick Phao':['chicken','chilli paste'],
+            'Makuer Phad Khai':['egg','tomato','garlic','onion'],
             'Gaenk Som Mhoo':['pork','curry','chilli','shrimp paste'],
             'Ghai Thom Nam plar':['chicken','fish sauce','soy sauce']
             }
@@ -118,6 +118,9 @@ def output(out, user):
     for i in range(0, 10):
         num = Label(root,font = ('Helvetica 16 bold',15),text=str(i+1)+': '+lst_show[i])
         num.grid(row=i+1,column=0,sticky=W)
+    for j in range(0,10):
+        num = Label(root,text=str(j+1)+': '+lst_show[j])
+        num.grid(row=j+1,column=1,sticky=E)
     number = Entry(root,state='normal')
     number.grid(row=11)
     ok = Button(root,text='ตกลง',font=10,padx=5,pady=5,command=lambda:checknum(number,ans,user,root))
@@ -275,31 +278,31 @@ def main(user):
     kale = Checkbutton(root, text='คะน้า',variable=var_kale,padx=10,pady=5,font=15,command=lambda:check(var_kale,'kale',thing))
     kale.grid(row=5,column=1,sticky=W)
 #row3
-    soysauce = Checkbutton(root, text='ซอสถั่วเหลือง',variable=var_soysauce,padx=10,pady=5,font=15,command=lambda:check(var_soysauce,'soysauce',thing))
+    soysauce = Checkbutton(root, text='ซอสถั่วเหลือง',variable=var_soysauce,padx=10,pady=5,font=15,command=lambda:check(var_soysauce,'soy sauce',thing))
     soysauce.grid(row=5,column=2,sticky=W)
-    oystersauce = Checkbutton(root, text='ซอสหอยนางรม',variable=var_oystersauce,padx=10,pady=5,font=15,command=lambda:check(var_oystersauce,'oystersauce',thing))
+    oystersauce = Checkbutton(root, text='ซอสหอยนางรม',variable=var_oystersauce,padx=10,pady=5,font=15,command=lambda:check(var_oystersauce,'oyster sauce',thing))
     oystersauce.grid(row=5,column=3,sticky=W)
-    fishsauce = Checkbutton(root, text='น้ำปลา',variable=var_fishsauce,padx=10,pady=5,font=15,command=lambda:check(var_fishsauce,'fishsauce',thing))
+    fishsauce = Checkbutton(root, text='น้ำปลา',variable=var_fishsauce,padx=10,pady=5,font=15,command=lambda:check(var_fishsauce,'fish sauce',thing))
     fishsauce.grid(row=5,column=4,sticky=W)
-    panaengcurry = Checkbutton(root, text='ผงเเกงพะเเนง',variable=var_panaengcurry,padx=10,pady=5,font=15,command=lambda:check(var_panaengcurry,'panaengcurry',thing))
+    panaengcurry = Checkbutton(root, text='ผงเเกงพะเเนง',variable=var_panaengcurry,padx=10,pady=5,font=15,command=lambda:check(var_panaengcurry,'panaeng curry',thing))
     panaengcurry.grid(row=6,column=0,sticky=W)
-    coconutmilk = Checkbutton(root, text='กะทิ',variable=var_coconutmilk,padx=10,pady=5,font=15,command=lambda:check(var_coconutmilk,'coconutmilk',thing))
+    coconutmilk = Checkbutton(root, text='กะทิ',variable=var_coconutmilk,padx=10,pady=5,font=15,command=lambda:check(var_coconutmilk,'coconut milk',thing))
     coconutmilk.grid(row=6,column=1,sticky=W)
-    currypowder = Checkbutton(root, text='ผงกะหรี่',variable=var_currypowder,padx=10,pady=5,font=15,command=lambda:check(var_currypowder,'currypowder',thing))
+    currypowder = Checkbutton(root, text='ผงกะหรี่',variable=var_currypowder,padx=10,pady=5,font=15,command=lambda:check(var_currypowder,'curry powder',thing))
     currypowder.grid(row=6,column=2,sticky=W)
     palo = Checkbutton(root, text='พะโล้',variable=var_palo,padx=10,pady=5,font=15,command=lambda:check(var_palo,'palo',thing))
     palo.grid(row=6,column=3,sticky=W)
-    soupcube = Checkbutton(root, text='ซุปก้อน',variable=var_soupcube,padx=10,pady=5,font=15,command=lambda:check(var_soupcube,'soupcube',thing))
+    soupcube = Checkbutton(root, text='ซุปก้อน',variable=var_soupcube,padx=10,pady=5,font=15,command=lambda:check(var_soupcube,'soup cube',thing))
     soupcube.grid(row=6,column=4,sticky=W)
-    currypaste = Checkbutton(root, text='พริกเเกง',variable=var_currypaste,padx=10,pady=5,font=15,command=lambda:check(var_currypaste,'currypaste',thing))
+    currypaste = Checkbutton(root, text='พริกเเกง',variable=var_currypaste,padx=10,pady=5,font=15,command=lambda:check(var_currypaste,'curry paste',thing))
     currypaste.grid(row=7,column=0,sticky=W)
-    masmancurry = Checkbutton(root, text='เเกงมัสมั่น',variable=var_masmancurry,padx=10,pady=5,font=15,command=lambda:check(var_masmancurry,'masmancurry',thing))
+    masmancurry = Checkbutton(root, text='เเกงมัสมั่น',variable=var_masmancurry,padx=10,pady=5,font=15,command=lambda:check(var_masmancurry,'masman curry',thing))
     masmancurry.grid(row=7,column=1,sticky=W)
-    chillipaste = Checkbutton(root, text='พริกเผา',variable=var_chillipaste,padx=10,pady=5,font=15,command=lambda:check(var_chillipaste,'chillipaste',thing))
+    chillipaste = Checkbutton(root, text='พริกเผา',variable=var_chillipaste,padx=10,pady=5,font=15,command=lambda:check(var_chillipaste,'chilli paste',thing))
     chillipaste.grid(row=7,column=2,sticky=W)
-    sukisauce = Checkbutton(root, text='น้ำจิ้มสุกี้',variable=var_sukisauce,padx=10,pady=5,font=15,command=lambda:check(var_sukisauce,'sukisauce',thing))
+    sukisauce = Checkbutton(root, text='น้ำจิ้มสุกี้',variable=var_sukisauce,padx=10,pady=5,font=15,command=lambda:check(var_sukisauce,'suki sauce',thing))
     sukisauce.grid(row=7,column=3,sticky=W)
-    shrimppaste = Checkbutton(root, text='กะปิ',variable=var_shrimppaste,padx=10,pady=5,font=15,command=lambda:check(var_shrimppaste,'shrimppaste',thing))
+    shrimppaste = Checkbutton(root, text='กะปิ',variable=var_shrimppaste,padx=10,pady=5,font=15,command=lambda:check(var_shrimppaste,'shrimp paste',thing))
     shrimppaste.grid(row=7,column=4,sticky=W)
 
     ok = Button(root, text='ตกลง',font=10,padx=15,pady=5,command=lambda:data(thing, user,root))
@@ -416,8 +419,8 @@ def CreateUser():   #<---  create username and password
 
     signroot = Tk()
     signroot.resizable(width=False,height=False)
-    signroot.geometry('{}x{}'.format(700,400))
-    signroot.title('Signup')
+    signroot.geometry('{}x{}'.format(600,180))
+    signroot.title('Sign Up')
     top = Frame(signroot)
     top.pack()
     mid = Frame(signroot)
@@ -440,24 +443,20 @@ def CreateUser():   #<---  create username and password
     passEntry = Entry(mid, show='*')
     passEntry.grid(row=4,column=1,sticky=W,padx=15)
 
-    signButton = Button(signroot, text='Sign Up',padx=10,pady=10,
+    signButton = Button(mid, text='Sign Up',padx=10,pady=10,
         command=lambda:WriteUs(nameEntry, passEntry,signroot))
-    signButton.grid(row=5,column=1,sticky=E)
+    signButton.grid(row=6,columnspan=2)
+    z = Label(mid,text='')
+    z.grid(row=5)
 
-
-    var=IntVar()
-
-    ShowPass = Checkbutton(signroot, text='Show password',font=15,
-        variable=var,
-        command=lambda:displayPassword(passEntry, var))
-    ShowPass.grid(row=5,column=0, sticky=W)
     signroot.mainloop()
 
 def userHelp():
-    messagebox.showinfo('what this program does', 'this program blabla')
+    messagebox.showinfo('what this program does', 'เขตมือเบสพระนครมาเเล้วจ้า!!!')
 
 #password display
 def displayPassword(passwordEntry, var):
+
     if var.get():
         passwordEntry.config(show='')
     else:
@@ -473,7 +472,7 @@ def Login():
     bot = Frame(loginroot)
     bot.pack()
     loginroot.resizable(width=False,height=False)
-    loginroot.geometry('{}x{}'.format(700,400))
+    loginroot.geometry('{}x{}'.format(500,250))
     loginroot.title('Login System')
 
     Login_1 = Label(mid, text='จะกินอะไรดี',
@@ -487,12 +486,6 @@ def Login():
     password_1 = Label(mid, text='Password :',font=30)
     password_1.grid(row=4,sticky=E)
 
-# Username input
-    usernameInput = Entry(mid)
-    usernameInput.grid(row=3, column=2)
-
-    passwordInput = Entry(mid, show='*')
-    passwordInput.grid(row=4, column=2)
 # Entry of login
     usernameEntry = Entry(mid)
     usernameEntry.grid(row=3, column=2)
