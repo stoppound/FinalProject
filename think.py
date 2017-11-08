@@ -12,40 +12,40 @@ def data(thing, user, root):
 
     menu = {'Khao Phad Mhoo':['rice','pork','egg','soy sauce','oyster sauce'],
             'Khao Phad Ghai':['rice','chicken','egg','soy sauce','oyster sauce'],
-            'Mhoo Thord Kratiem':['pork','garlic,oyster sauce,soy sauce'],
-            'Ghai Thord Kratiem':['chicken','garlic,oyster sauce,soy sauce'],
+            'Mhoo Thord Kratiem':['pork','garlic','oyster sauce','soy sauce'],
+            'Ghai Thord Kratiem':['chicken','garlic','oyster sauce','soy sauce'],
             'Mhoo Phad Kra Phrao':['pork','basil','chilli','garlic','oyster sauce'],
             'Ghai Phad Kra Phrao':['chicken','basil','chilli','garlic','oyster sauce'],
-            'Mama Phad Mhoo':['mama','pork','egg,chilli'],
-            'Mama Phad Ghai':['mama','chicken','egg,chilli'],
+            'Mama Phad Mhoo':['mama','pork','egg'],
+            'Mama Phad Ghai':['mama','chicken','egg'],
             'Mhoo Thord Nam Plar':['pork','fish sauce','soy sauce','oyster sauce'],
             'Ghai Thord Nam Plar':['chicken','fish sauce','soy sauce','oyster sauce'],
             'Panaeng Mhoo':['pork','panaeng curry','coconut milk','chilli'],
             'Panaeng Ghai':['chicken','panaeng curry','coconut milk','chilli'],
-            'Fak Tong Phad Khai':['pumpkin','egg','garlic'],
+            'Fak Tong Phad Khai':['pumpkin','egg','garlic','coriander'],
             'Khai Palo':['egg','tofu','palo','garlic'],
             'Khai Jiew Mhoo Sahb':['egg','pork','soy sauce'],
             'Mhoo Phad Nammun Hoy':['pork','oyster sauce','garlic'],
             'Mhoo Phad Phonk Kraree':['pork','curry powder','onion','milk','egg'],
-            'Phad Prick Gaenk Mhoo':['pork','curry','garlic'],
+            'Phad Prick Gaenk Mhoo':['pork','curry paste','garlic'],
             'Phad Phonk Kraree Thale':['squid','shrimp','onion','milk','egg','curry powder'],
             'Khaw Thom Mhoo':['pork','rice','garlic','soy sauce'],
             'Khaw Thom Koong':['shrimp','rice','garlic','soy sauce'],
             'Masman Ghai':['chicken','onion','coconut milk','potato','masman curry'],
             'Mhoo Manaw':['pork','garlic','chilli','fish sauce','lime'],
-            'Tom Yam Koong Nam Khon':['mushroom','milk','shrimp','chili paste','chilli','lime','tomato'],
+            'Tom Yam Koong Nam Khon':['mushroom','milk','shrimp','chilli','lime','tomato'],
             'Suki Mhoo':['garlic','egg','pork','suki sauce'],
             'Larb Mhoo':['pork','shallot','coriander','chilli','lime'],
             'Larb Ghai':['chicken','shallot','coriander','chilli','lime'],
-            'Tom Jued Mhoo Sub':['pork','tofu','soup cube'],
+            'Tom Jued Mhoo Sub':['pork','tofu','soup cube','garlic'],
             'Hed Phud Nammun Hoy':['mushroom','oyster sauce','soy sauce'],
-            'Khaw Thom Plar':['fish','rice','garlic','soysauce'],
+            'Khaw Thom Plar':['fish','rice','garlic','soy sauce'],
             'Khana Mhoo':['pork','kale','soy sauce','oyster sauce'],
-            'Mhoo Phad Prick Phao':['pork','chilli paste'],
-            'Ghai Phad Prick Phao':['chicken','chilli paste'],
+            'Mhoo Phad Prick Phao':['pork','chilli paste','garlic','fish sauce'],
+            'Ghai Phad Prick Phao':['chicken','chilli paste','garlic','fish sauce'],
             'Makuer Phad Khai':['egg','tomato','garlic','onion'],
-            'Gaenk Som Mhoo':['pork','curry','chilli','shrimp paste'],
-            'Ghai Thom Nam plar':['chicken','fish sauce','soy sauce']
+            'Gaenk Som Mhoo':['pork','curry paste','chilli','shrimp paste'],
+            'Ghai Thom Nam plar':['chicken','fish sauce','soy sauce','coriander']
             }
     lst = []
     for m in menu:
@@ -53,6 +53,9 @@ def data(thing, user, root):
         for i in thing:
             if i in menu[m]:
                 num_count += 1
+        if len(menu[m])==(len(menu[m])-num_count):
+            num_count = -3
+
         lst.append((len(menu[m])-num_count, m))
     lst.sort()
     output(lst, user)
@@ -111,21 +114,53 @@ def output(out, user):
         lst_show.append(ans[num-1][1])
 
     root = Tk()
+    root.title('เเนะนำเมนู10อันดับ')
     root.resizable(width=False,height=False)
     # root.geometry('{}x{}'.format(700,400))
-    name=Label(root,text='กรุณาเลือกเมนู',font = ('Helvetica 16 bold',20),fg='blue')
-    name.grid(row=0,columnspan=2)
-    for i in range(0, 10):
-        num = Label(root,font = ('Helvetica 16 bold',15),text=str(i+1)+': '+showname(lst_show[i]))
+    name=Label(root,text='กรุณาเลือกเมนู',font = ('Helvetica 16 bold',30),fg='blue')
+    name.grid(row=0,columnspan=4)
+    for i in range(0, 5):
+        num = Label(root,font = ('Helvetica 16 bold',20),text=str(i+1)+': '+showname(lst_show[i]))
         num.grid(row=i+1,column=0,sticky=W)
-    for j in range(0,10):
+    for j in range(0,5):
         showpic(lst_show[j],root,j)
+    for k in range(0, 5):
+        num = Label(root,font = ('Helvetica 16 bold',20),text=str(k+6)+': '+showname(lst_show[k+5]))
+        num.grid(row=k+1,column=2,sticky=W)
+    for l in range(0,5):
+        showpic2(lst_show[l+5],root,l)
     number = Entry(root,state='normal')
-    number.grid(row=11)
-    ok = Button(root,text='ตกลง',font=10,padx=5,pady=5,command=lambda:checknum(number,ans,user,root))
-    ok.grid(row=12)
+    number.grid(row=6,column=0,columnspan=2,sticky=E)
+    ok = Button(root,text='ตกลง',font=15,bg='sky blue',padx=5,pady=5,command=lambda:checknum(number,ans,user,root))
+    ok.grid(row=6,column=2,sticky=W)
 
     root.mainloop()
+
+def checknum(number,ans,user,root):
+    if not(number.get().isdigit() and 1 <= int(number.get()) <= 10):
+        messagebox.showerror('Error','Invalid Number')
+        number.delete(0, 'end')
+    else:
+        number = int(number.get())
+        messagebox.showinfo('Correct','Successfully')
+        num = 0
+        count = 1
+        while count != 11:
+            count += 1
+            num += 1
+            if num == number:
+                save2((ans[num-1][1]), user)
+                showans((ans[num-1][1]),root)
+
+def showans(ans,root):
+    root.destroy()
+    master=Tk()
+    master.resizable(width=False,height=False)
+    master.geometry('{}x{}'.format(700,400))
+    showpic3(ans)
+    master.mainloop()
+
+
 def showpic(text,root,j):
     if text == 'Khao Phad Mhoo':
         pic = PhotoImage(file='image(gif)/Khao Phad Mhoo.gif')
@@ -344,6 +379,443 @@ def showpic(text,root,j):
         tmpphoto.grid(row=j+1,column=1,sticky=W)
         return
 
+def showpic2(text,root,j):
+    if text == 'Khao Phad Mhoo':
+        pic = PhotoImage(file='image(gif)/Khao Phad Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khao Phad Ghai':
+        pic = PhotoImage(file='image(gif)/Khao Phad Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Thord Kratiem':
+        pic = PhotoImage(file='image(gif)/Mhoo Thord Kratiem.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Ghai Thord Kratiem':
+        pic = PhotoImage(file='image(gif)/Ghai Thord Kratiem.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Phad Kra Phrao':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Kra Phrao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Ghai Phad Kra Phrao':
+        pic = PhotoImage(file='image(gif)/Ghai Phad Kra Phrao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mama Phad Mhoo':
+        pic = PhotoImage(file='image(gif)/Mama Phad Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mama Phad Ghai':
+        pic = PhotoImage(file='image(gif)/Mama Phad Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Thord Nam Plar':
+        pic = PhotoImage(file='image(gif)/Mhoo Thord Nam Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Ghai Thord Nam Plar':
+        pic = PhotoImage(file='image(gif)/Ghai Thord Nam Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Panaeng Mhoo':
+        pic = PhotoImage(file='image(gif)/Panaeng Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Panaeng Ghai':
+        pic = PhotoImage(file='image(gif)/Panaeng Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Fak Tong Phad Khai':
+        pic = PhotoImage(file='image(gif)/Fak Tong Phad Khai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khai Palo':
+        pic = PhotoImage(file='image(gif)/Khai Palo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khai Jiew Mhoo Sahb':
+        pic = PhotoImage(file='image(gif)/Khai Jiew Mhoo Sahb.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Phad Nammun Hoy':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Nammun Hoy.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Phad Phonk Kraree':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Phonk Kraree.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Phad Prick Gaenk Mhoo':
+        pic = PhotoImage(file='image(gif)/Phad Prick Gaenk Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Phad Phonk Kraree Thale':
+        pic = PhotoImage(file='image(gif)/Phad Phonk Kraree Thale.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khaw Thom Mhoo':
+        pic = PhotoImage(file='image(gif)/Khaw Thom Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khaw Thom Koong':
+        pic = PhotoImage(file='image(gif)/Khaw Thom Koong.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Masman Ghai':
+        pic = PhotoImage(file='image(gif)/Masman Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Manaw':
+        pic = PhotoImage(file='image(gif)/Mhoo Manaw.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Tom Yam Koong Nam Khon':
+        pic = PhotoImage(file='image(gif)/Tom Yam Koong Nam Khon.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Suki Mhoo':
+        pic = PhotoImage(file='image(gif)/Suki Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Larb Mhoo':
+        pic = PhotoImage(file='image(gif)/Larb Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Larb Ghai':
+        pic = PhotoImage(file='image(gif)/Larb Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Tom Jued Mhoo Sub':
+        pic = PhotoImage(file='image(gif)/Tom Jued Mhoo Sub.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Hed Phud Nammun Hoy':
+        pic = PhotoImage(file='image(gif)/Hed Phud Nammun Hoy.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khaw Thom Plar':
+        pic = PhotoImage(file='image(gif)/Khaw Thom Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Khana Mhoo':
+        pic = PhotoImage(file='image(gif)/Khana Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Mhoo Phad Prick Phao':
+        pic = PhotoImage(file='image(gif)/Mhoo Phad Prick Phao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Ghai Phad Prick Phao':
+        pic = PhotoImage(file='image(gif)/Ghai Phad Prick Phao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Makuer Phad Khai':
+        pic = PhotoImage(file='image(gif)/Makuer Phad Khai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Gaenk Som Mhoo':
+        pic = PhotoImage(file='image(gif)/Gaenk Som Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+    elif text == 'Ghai Thom Nam plar':
+        pic = PhotoImage(file='image(gif)/Ghai Thom Nam plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=3,sticky=W)
+        return
+
+def showpic3(text):
+    if text == 'Khao Phad Mhoo':
+        pic = PhotoImage(file='last(gif)/Khao Phad Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khao Phad Ghai':
+        pic = PhotoImage(file='last(gif)/Khao Phad Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Thord Kratiem':
+        pic = PhotoImage(file='last(gif)/Mhoo Thord Kratiem.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Thord Kratiem':
+        pic = PhotoImage(file='last(gif)/Ghai Thord Kratiem.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Kra Phrao':
+        pic = PhotoImage(file='last(gif)/Mhoo Phad Kra Phrao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Phad Kra Phrao':
+        pic = PhotoImage(file='last(gif)/Ghai Phad Kra Phrao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mama Phad Mhoo':
+        pic = PhotoImage(file='last(gif)/Mama Phad Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mama Phad Ghai':
+        pic = PhotoImage(file='last(gif)/Mama Phad Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Thord Nam Plar':
+        pic = PhotoImage(file='last(gif)/Mhoo Thord Nam Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Thord Nam Plar':
+        pic = PhotoImage(file='last(gif)/Ghai Thord Nam Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Panaeng Mhoo':
+        pic = PhotoImage(file='last(gif)/Panaeng Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Panaeng Ghai':
+        pic = PhotoImage(file='last(gif)/Panaeng Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Fak Tong Phad Khai':
+        pic = PhotoImage(file='last(gif)/Fak Tong Phad Khai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khai Palo':
+        pic = PhotoImage(file='last(gif)/Khai Palo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khai Jiew Mhoo Sahb':
+        pic = PhotoImage(file='last(gif)/Khai Jiew Mhoo Sahb.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Nammun Hoy':
+        pic = PhotoImage(file='last(gif)/Mhoo Phad Nammun Hoy.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Phonk Kraree':
+        pic = PhotoImage(file='last(gif)/Mhoo Phad Phonk Kraree.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Phad Prick Gaenk Mhoo':
+        pic = PhotoImage(file='last(gif)/Phad Prick Gaenk Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Phad Phonk Kraree Thale':
+        pic = PhotoImage(file='last(gif)/Phad Phonk Kraree Thale.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khaw Thom Mhoo':
+        pic = PhotoImage(file='last(gif)/Khaw Thom Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khaw Thom Koong':
+        pic = PhotoImage(file='last(gif)/Khaw Thom Koong.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Masman Ghai':
+        pic = PhotoImage(file='last(gif)/Masman Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Manaw':
+        pic = PhotoImage(file='last(gif)/Mhoo Manaw.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Tom Yam Koong Nam Khon':
+        pic = PhotoImage(file='last(gif)/Tom Yam Koong Nam Khon.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Suki Mhoo':
+        pic = PhotoImage(file='last(gif)/Suki Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Larb Mhoo':
+        pic = PhotoImage(file='last(gif)/Larb Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Larb Ghai':
+        pic = PhotoImage(file='last(gif)/Larb Ghai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Tom Jued Mhoo Sub':
+        pic = PhotoImage(file='last(gif)/Tom Jued Mhoo Sub.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Hed Phud Nammun Hoy':
+        pic = PhotoImage(file='last(gif)/Hed Phud Nammun Hoy.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khaw Thom Plar':
+        pic = PhotoImage(file='last(gif)/Khaw Thom Plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Khana Mhoo':
+        pic = PhotoImage(file='last(gif)/Khana Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Mhoo Phad Prick Phao':
+        pic = PhotoImage(file='last(gif)/Mhoo Phad Prick Phao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Phad Prick Phao':
+        pic = PhotoImage(file='last(gif)/Ghai Phad Prick Phao.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Makuer Phad Khai':
+        pic = PhotoImage(file='last(gif)/Makuer Phad Khai.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Gaenk Som Mhoo':
+        pic = PhotoImage(file='last(gif)/Gaenk Som Mhoo.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+    elif text == 'Ghai Thom Nam plar':
+        pic = PhotoImage(file='last(gif)/Ghai Thom Nam plar.gif')
+        tmpphoto=Label(root, image=pic)
+        tmpphoto.photo = pic
+        tmpphoto.grid(row=j+1,column=1,sticky=W)
+        return
+
+
 def showname(output):
     if output == 'Khao Phad Mhoo':
         return("ข้าวผัดหมู")
@@ -388,13 +860,13 @@ def showname(output):
     elif output == 'Khaw Thom Koong':
         return("ข้าวต้มกุ้ง")
     elif output == 'Masman Ghai':
-        return("มัสมั่ยไก่")
+        return("มัสมั่นไก่")
     elif output == 'Mhoo Manaw':
         return("หมูมะนาว")
     elif output == 'Tom Yam Koong Nam Khon':
         return("ต้มยำกุ้งน้ำข้น")
     elif output == 'Suki Mhoo':
-        return("สุกี้หมูjpg")
+        return("สุกี้หมู")
     elif output == 'Larb Mhoo':
         return("ลาบหมู")
     elif output == 'Larb Ghai':
@@ -417,32 +889,6 @@ def showname(output):
         return("แกงส้มหมู")
     elif output == 'Ghai Thom Nam plar':
         return("ไก่ต้มน้ำปลา")
-
-def checknum(number,ans,user,root):
-    if not(number.get().isdigit() and 1 <= int(number.get()) <= 10):
-        messagebox.showerror('Error','Invalid Number')
-        number.delete(0, 'end')
-    else:
-        number = int(number.get())
-        messagebox.showinfo('Correct','Successfully')
-        num = 0
-        count = 1
-        while count != 11:
-            count += 1
-            num += 1
-            if num == number:
-                save2(ans[num-1][1], user)
-                showans((ans[num-1][1]),root)
-
-def showans(ans,root):
-
-    root.destroy()
-    master=Tk()
-    master.resizable(width=False,height=False)
-    master.geometry('{}x{}'.format(700,400))
-    show = Label(master,text=ans+'  -_-!',font=50)
-    show.pack()
-    master.mainloop()
 
 def getValue(user, menu):
     df = load()
@@ -734,27 +1180,12 @@ def CreateUser():   #<---  create username and password
     passEntry = Entry(mid, show='*')
     passEntry.grid(row=4,column=1,sticky=W,padx=15)
 
-<<<<<<< Updated upstream
     signButton = Button(mid, text='Sign Up',padx=10,pady=10,
         command=lambda:WriteUs(nameEntry, passEntry,signroot))
     signButton.grid(row=6,columnspan=2)
     z = Label(mid,text='')
     z.grid(row=5)
 
-=======
-# signroot to mid change
-    signButton = Button(mid, text='Sign Up',padx=10,pady=10,
-        command=lambda:WriteUs(nameEntry, passEntry,mid))
-    signButton.grid(row=5,column=1,sticky=E)
-
-
-    var=IntVar()
-
-    ShowPass = Checkbutton(mid, text='Show password',font=15,
-        variable=var,
-        command=lambda:displayPassword(passEntry, var))
-    ShowPass.grid(row=5,column=0, sticky=W)
->>>>>>> Stashed changes
     signroot.mainloop()
 
 def userHelp():
@@ -779,7 +1210,7 @@ def Login():
     bot.pack()
     loginroot.resizable(width=False,height=False)
     loginroot.geometry('{}x{}'.format(500,250))
-    loginroot.title('Login System')
+    loginroot.title('จะกินอะไรดี')
 
     Login_1 = Label(mid, text='จะกินอะไรดี',
         fg = 'green',
