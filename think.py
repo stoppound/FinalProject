@@ -29,8 +29,8 @@ def data(thing, user, root):
             'Mhoo Phad Phonk Kraree':['pork','curry powder','onion','milk','egg'],
             'Phad Prick Gaenk Mhoo':['pork','curry paste','garlic'],
             'Phad Phonk Kraree Thale':['squid','shrimp','onion','milk','egg','curry powder'],
-            'Khaw Thom Mhoo':['pork','rice','garlic','soy sauce'],
-            'Khaw Thom Koong':['shrimp','rice','garlic','soy sauce'],
+            'Khaw Thom Mhoo':['pork','rice','soy sauce'],
+            'Khaw Thom Koong':['shrimp','rice','soy sauce'],
             'Masman Ghai':['chicken','onion','coconut milk','potato','masman curry'],
             'Mhoo Manaw':['pork','garlic','chilli','fish sauce','lime'],
             'Tom Yam Koong Nam Khon':['mushroom','milk','shrimp','chilli','lime','tomato'],
@@ -1189,7 +1189,7 @@ def CreateUser():   #<---  create username and password
     signroot.mainloop()
 
 def userHelp():
-    messagebox.showinfo('what this program does', 'เขตมือเบสพระนครมาเเล้วจ้า!!!')
+    messagebox.showinfo('Help!', 'วิธีการใช้งาน\n1.กรอกบัญชีผู้ใช้งาน(ถ้าหากยังไม่มีบัญชีผู้ใช้ให้ทำการสมัครบัญชีผู้ใช้ก่อน)\n2.เลือกวัตถุดิบที่ผู้ใช้มีอยู่\n3.เลือกเมนูที่ผู้ใช้สนใจจะทำ(กรอกเป็นตัวเลข1-10)')
 
 #password display
 def displayPassword(passwordEntry, var):
