@@ -6,6 +6,7 @@ warnings.filterwarnings("ignore")
 from PIL import Image
 from tkinter import *
 from tkinter import messagebox
+import math
 
 def data(thing, user, root):
     root.destroy()
@@ -60,6 +61,10 @@ def data(thing, user, root):
     lst.sort()
     output(lst, user)
 
+def getValue(user, menu):
+    df = load()
+    return df[df['id'] == user][menu].values[0]
+
 def output(out, user):
     lst0 = []
     lst1 = []
@@ -75,40 +80,41 @@ def output(out, user):
     for i in out:
         if i[0] == 0:
             lst0.append([getValue(user, i[1]), i[1]])
-            lst0.sort(reverse=True)
+            lst0 = sorted(lst0, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 1:
             lst1.append([getValue(user, i[1]), i[1]])
-            lst1.sort(reverse=True)
+            lst1 = sorted(lst1, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 2:
             lst2.append([getValue(user, i[1]), i[1]])
-            lst2.sort(reverse=True)
+            lst2 = sorted(lst2, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 3:
             lst3.append([getValue(user, i[1]), i[1]])
-            lst3.sort(reverse=True)
+            lst3 = sorted(lst3, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 4:
             lst4.append([getValue(user, i[1]), i[1]])
-            lst4.sort(reverse=True)
+            lst4 = sorted(lst4, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 5:
             lst5.append([getValue(user, i[1]), i[1]])
-            lst5.sort(reverse=True)
+            lst5 = sorted(lst5, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 6:
             lst6.append([getValue(user, i[1]), i[1]])
-            lst6.sort(reverse=True)
+            lst6 = sorted(lst6, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 7:
             lst7.append([getValue(user, i[1]), i[1]])
-            lst7.sort(reverse=True)
+            lst7 = sorted(lst7, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 8:
             lst8.append([getValue(user, i[1]), i[1]])
-            lst8.sort(reverse=True)
+            lst8 = sorted(lst8, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 9:
             lst9.append([getValue(user, i[1]), i[1]])
-            lst9.sort(reverse=True)
+            lst9 = sorted(lst9, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
         elif i[0] == 10:
             lst10.append([getValue(user, i[1]), i[1]])
-            lst10.sort(reverse=True)
+            lst10 = sorted(lst10, reverse=True, key=lambda x: -1000 if math.isnan(x[0]) else x[0])
     lst_show=[]
-    num = 0
     ans = lst0 + lst1 + lst2 + lst3 + lst4 + lst5 + lst6 + lst7 + lst8 + lst9 + lst10
+
+    num = 0
     while num != 10:
         num += 1
         lst_show.append(ans[num-1][1])
@@ -890,10 +896,6 @@ def showname(output):
     elif output == 'Ghai Thom Nam plar':
         return("ไก่ต้มน้ำปลา")
 
-def getValue(user, menu):
-    df = load()
-    return df[df['id'] == user][menu].values[0]
-
 def save(df):
     df.to_csv('database.csv')
 
@@ -910,11 +912,10 @@ def load():
 def username(name):
     df = load()
     if name in df.id.values:
-        print('Have user')
-
+        pass
     else:
         df = df.append(pd.DataFrame({'id': [name]}),  ignore_index=True)
-        print('Add complete')
+
 
     save(df)
 
@@ -1047,13 +1048,12 @@ def main(user):
     root.mainloop()
 
 def check(var,text,thing):
-    print(var)
     if var.get():
         thing.append(text)
     else:
         if text in thing:
             thing.remove(text)
-    print(thing)
+
 
 def readFile(fname):
     try:
