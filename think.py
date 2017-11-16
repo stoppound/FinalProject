@@ -164,6 +164,8 @@ def showans(ans,root,user):
     master.title('Do It')
     master.resizable(width=False,height=False)
     showpic3(ans,master)
+    login = Button(master, text='Logout', command=lambda:again(master),font=15)
+    login.grid(row=2,column=1)
     master.mainloop()
 
 
@@ -1198,9 +1200,11 @@ def displayPassword(passwordEntry, var):
         passwordEntry.config(show='')
     else:
         passwordEntry.config(show='*')
+def again(master):
+    master.destroy()
+    Login()
 
 def Login():
-
     loginroot = Tk()
     top = Frame(loginroot)
     top.pack()
